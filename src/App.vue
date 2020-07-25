@@ -1,32 +1,39 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <v-app>
+        <v-card>
+            <v-img height="250" :src="$store.state.currentRoom.img">
+                <v-card-title style="color:white">{{$store.state.currentRoom.name}}</v-card-title>
+            </v-img>
+            <v-card-text>
+                <!-- level monster -->
+                <v-rating :value="$store.state.currentRoom.lvl" color="amber" dense half-increments readonly
+                          size="14"></v-rating>
+
+                <div>{{$store.state.currentRoom.description}}</div>
+                <v-btn x-small v-for="(option, i) in $store.state.currentRoom.options" :key="i">
+                    {{option}}
+                </v-btn>
+            </v-card-text>
+        </v-card>
+        <p>live:100</p>
+        <v-btn dark @click="makeRoom">generate Room</v-btn>
+    </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+  import engine from './game-engine/engine'
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  export default {
+    name: 'App',
+    components: {},
+    data: () => ({}),
+    methods: {
+      makeRoom() {
+        this.$store.commit('setCurrentRoom', engine.getRngPosRoom());
+      }
+    },
+    mounted() {
+      this.$store.commit('setCurrentRoom', engine.getRngPosRoom());
+    }
+  };
+</script>
