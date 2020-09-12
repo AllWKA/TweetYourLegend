@@ -1,13 +1,14 @@
 <template>
-  <v-img height="250" :src="imgURL">
-    <v-card-title style="color:black">{{title}}</v-card-title>
-  </v-img>
+  <div>
+    <v-img height="250" :src="imgURL" style="border: 5px solid #000000;"></v-img>
+    <h3 style="text-align: center; width: 100%">{{ title }}</h3>
+  </div>
 </template>
 
 <script>
 export default {
   name: "MonsterImage",
-  props:{
+  props: {
     imgURL: String,
     title: String
   }

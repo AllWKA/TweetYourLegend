@@ -6,7 +6,9 @@
     <!-- Monster Description -->
     <div>{{ description }}</div>
     <!-- Decision -->
-    <v-btn x-small v-for="(option, i) in options" :key="i">{{ option }}</v-btn>
+    <div style="display: flex; flex-direction: column; align-items: center">
+      <v-btn light x-small v-for="(option, i) in options" :key="i" class="desicion">{{ option }}</v-btn>
+    </div>
   </v-card-text>
 </template>
 <script>
@@ -21,7 +23,14 @@ export default {
   },
   mounted() {
   },
-  methods:{
-  }
+  methods: {}
 }
 </script>
+
+<style scoped>
+.desicion {
+  font-size: 15px;
+  margin-top: 3%;
+  width: 70%;
+}
+</style>
