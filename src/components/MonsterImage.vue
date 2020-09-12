@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-img height="250" :src="imgURL" style="border: 5px solid #000000;"></v-img>
-    <h3 style="text-align: center; width: 100%">{{ title }}</h3>
+    <v-img height="250" :src="imgURL" class="monster-image"></v-img>
+    <h3 class="monster-title">{{ title }}</h3>
   </div>
 </template>
 
@@ -16,4 +16,12 @@ export default {
 </script>
 
 <style scoped>
+.monster-image {
+  border: 5px solid #000000;
+}
+
+.monster-title {
+  text-align: center;
+  width: 100%;
+}
 </style>
