@@ -2,11 +2,16 @@
   <v-app style="background-color: #1E1E1E">
     <v-card dark>
       <MonsterImage :imgURL="$store.state.currentRoom.img" :title="$store.state.currentRoom.name"></MonsterImage>
+      <v-divider></v-divider>
       <PlayerStatus :attack="3.5" :max-attack="5" :defence="1.5" :max-defence="3" :live="0.5" :max-live="2"/>
+      <v-divider></v-divider>
       <MonsterDescription :description="$store.state.currentRoom.description" :monsterLevel="2.5" color-level="yellow"
-                          :level-size="25" :options="$store.state.currentRoom.options"/>
+                          :level-size="25" :options="$store.state.currentRoom.options"
+                          @new-resolution="saveRoomResolution"/>
     </v-card>
     <v-btn dark @click="makeRoom">generate Room</v-btn>
+    <v-divider></v-divider>
+    <p style="color: white" v-for="(resolution, i) in $store.state.legend" :key="i">{{ resolution }}</p>
   </v-app>
 </template>
 
@@ -27,6 +32,10 @@ export default {
   methods: {
     makeRoom() {
       this.$store.commit('setCurrentRoom', engine.getRngPosRoom());
+    },
+    saveRoomResolution(resolution) {
+      this.$store.commit('saveRoom', resolution)
+      this.makeRoom()
     }
   },
   mounted() {

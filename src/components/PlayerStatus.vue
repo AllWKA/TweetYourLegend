@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #1E1E1E">
+  <div style="background-color: #1E1E1E; margin-left: 2%">
     <!-- live -->
     <v-rating :length="maxLive" :value="live" readonly half-increments dark color="red" full-icon="mdi-heart"
               half-icon="mdi-heart-half-full" empty-icon="mdi-heart-outline"></v-rating>

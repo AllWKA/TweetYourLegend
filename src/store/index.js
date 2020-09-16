@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    legend: '',
+    legend: [],
     currentRoom: {
       name: '',
       lvl: 0,
@@ -40,6 +40,9 @@ export default new Vuex.Store({
       const roomsLength = this.rooms.length;
       const roomPos = Math.floor(Math.random() * (roomsLength));
       return this.rooms[roomPos]
+    },
+    saveRoom(state, roomResolution) {
+      state.legend.push(roomResolution);
     }
   },
   actions: {

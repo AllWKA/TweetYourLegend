@@ -6,11 +6,12 @@
               empty-icon="mdi-alert-circle-outline"></v-rating>
     <!-- Monster Description -->
     <div>{{ description }}</div>
-    <!-- Desition -->
-    <div class="desition-container">
-      <button v-for="(option, i) in options" :key="i" class="desition">
-        {{ option }}
+    <!-- Decision -->
+    <div class="decision-container">
+      <button v-for="(decision, i) in options" :key="i" class="decision" @click="sendDecision(decision, description)">
+        {{ decision }}
         <v-icon dense>mdi-chat-processing</v-icon>
+        <v-divider></v-divider>
       </button>
     </div>
   </v-card-text>
@@ -27,18 +28,23 @@ export default {
   },
   mounted() {
   },
-  methods: {}
+  methods: {
+    sendDecision(decision, description) {
+      console.log(`emitting resolution:\n${description}\n${decision}`)
+      this.$emit('new-resolution', `${description}\n${decision}`)
+    }
+  }
 }
 </script>
 
 <style scoped>
-.desition {
+.decision {
   font-size: 15px;
   margin-top: 3%;
   width: 70%;
 }
 
-.desition-container {
+.decision-container {
   display: flex;
   flex-direction: column;
   align-items: center;
