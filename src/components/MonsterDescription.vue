@@ -8,7 +8,10 @@
     <div>{{ description }}</div>
     <!-- Desition -->
     <div class="desition-container">
-      <v-btn light x-small v-for="(option, i) in options" :key="i" class="desition">{{ option }}</v-btn>
+      <button v-for="(option, i) in options" :key="i" class="desition">
+        {{ option }}
+        <v-icon dense>mdi-chat-processing</v-icon>
+      </button>
     </div>
   </v-card-text>
 </template>
