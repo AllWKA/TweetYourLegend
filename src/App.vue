@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import engine from './game-engine/engine'
+import engine from './services/engine'
 import MonsterImage from './components/MonsterImage'
 import MonsterDescription from "@/components/MonsterDescription";
 import PlayerStatus from "@/components/PlayerStatus";
