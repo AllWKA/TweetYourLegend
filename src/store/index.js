@@ -18,7 +18,7 @@ export default new Vuex.Store({
       {
         name: 'Petuzac',
         lvl: 6,
-        img: 'https://previews.123rf.com/images/lightwise/lightwise1705/lightwise170500020/77451571-pies-azules-del-monstruo-como-s%C3%ADmbolo-espeluznante-de-halloween-o-de-miedo-del-zombi-con-la-piel-y-los.jpg',
+        img: 'https://kpoplat.com/wp-content/uploads/2020/10/loren-lisa-1024x354.png',
         description: 'Derepente apareció ante mi un pie, pero en vez de dedos brazos y ojos en el talón.',
         options: ['Salí corriendo del pestazo', 'le corté las uñas de las manos', 'me fui, sus ojos apuntaban en dirección contraria']
       },
