@@ -1,5 +1,5 @@
 <template>
-  <v-card-text>
+  <v-card-text style="padding: 0">
     <div class="container">
       <!-- level monster -->
       <v-rating :value="monsterLevel" :color="colorLevel" half-increments readonly :size="levelSize"
@@ -7,17 +7,10 @@
                 empty-icon="mdi-alert-circle-outline"></v-rating>
       <!-- Monster Description -->
       <div class="description-container">{{ description }}</div>
-      <!-- Decision -->
-      <div class="decision-container">
-        <button v-for="(decision, i) in options" :key="i" class="decision" @click="sendDecision(decision, description)">
-          {{ decision }}
-          <v-icon>mdi-chat-processing</v-icon>
-          <v-divider></v-divider>
-        </button>
-      </div>
     </div>
   </v-card-text>
 </template>
+
 <script>
 export default {
   name: 'MonsterDescription',
@@ -25,27 +18,12 @@ export default {
     monsterLevel: Number,
     colorLevel: String,
     levelSize: Number,
-    description: String,
-    options: Array
-  },
-  mounted() {
-  },
-  methods: {
-    sendDecision(decision, description) {
-      this.$emit('new-resolution', `${description}\n${decision}`)
-    }
+    description: String
   }
 }
 </script>
 
 <style scoped>
-.decision {
-  font-size: 15px;
-  margin-top: 3%;
-  width: 70%;
-  color: white;
-  background-color: #292929;
-}
 
 .description-container {
   color: white;
@@ -56,13 +34,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.decision-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
 }
 
 .container {
