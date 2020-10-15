@@ -6,11 +6,13 @@
       </div>
       <MonsterDescription :description="$store.state.currentRoom.description" :monsterLevel="2.5" color-level="yellow"
                           :level-size="25"/>
-      <PlayerStatus :attack="3.5" :max-attack="5" :defence="1.5" :max-defence="3" :live="0.5" :max-live="2"
-                    style="width: 100%"/>
-      <decisions :options="$store.state.currentRoom.options" :description="$store.state.currentRoom.description"
-                 @new-resolution="saveRoomResolution"></decisions>
-      <Legend @ToggleLegendVisible="toggleIsLegendVisible" :is-legend-visible="isLegendVisible" :username="Paco" :legend="$store.state.legend"/>
+      <PlayerStatus :attack="$store.state.player.stats.attack" :max-attack="$store.state.player.stats.maxAttack"
+                    :defence="$store.state.player.stats.shield" :max-defence="$store.state.player.stats.maxShield"
+                    :live="$store.state.player.stats.life" :max-live="$store.state.player.stats.maxLife"/>
+      <Decisions :options="$store.state.currentRoom.options" :description="$store.state.currentRoom.description"
+                 @new-resolution="saveRoomResolution"></Decisions>
+      <Legend @ToggleLegendVisible="toggleIsLegendVisible" :is-legend-visible="isLegendVisible" username="Paco"
+              :legend="$store.state.legend"/>
     </div>
   </v-app>
 </template>

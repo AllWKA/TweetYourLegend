@@ -15,10 +15,12 @@
         </v-toolbar>
         <div class="card-container" v-for="(resolution, i) in legend" :key="i">
           <div class="user-container">
-            <v-avatar color="indigo">
-              <v-icon dark>mdi-twitter</v-icon>
-            </v-avatar>
-            <p class="user-name">{{ username }}</p>
+            <div style="display: flex; align-items: center">
+              <v-avatar color="indigo">
+                <v-icon dark>mdi-twitter</v-icon>
+              </v-avatar>
+              <p class="user-name">{{ username }}</p>
+            </div>
             <div class="copy-container">
               <v-btn @click="copyResolution(i)" small>
                 <v-icon dense>mdi-content-copy</v-icon>
@@ -28,7 +30,7 @@
           <v-textarea :id="'resolution-'+i" :value="resolution" class="text-area" filled dark dense counter auto-grow>
           </v-textarea>
           <v-divider></v-divider>
-          <v-icon>mdi-timeline-clock-outline</v-icon>
+          <v-icon large style="background-color: #000a1d">mdi-timeline-clock-outline</v-icon>
           <v-divider></v-divider>
         </div>
       </v-card>
@@ -71,6 +73,7 @@ export default {
 .user-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-left: 3%;
   padding-right: 3%;
   margin-bottom: 3%;

@@ -1,7 +1,7 @@
 <template>
   <div class="decision-container">
     <button v-for="(decision, i) in options" :key="i" class="decision" @click="sendDecision(decision, description)">
-      {{ decision }}
+      {{ decision.optionDescription }}
       <v-icon>mdi-chat-processing</v-icon>
       <v-divider></v-divider>
     </button>
@@ -14,7 +14,7 @@ export default {
   props: {options: Array, description: String},
   methods: {
     sendDecision(decision, description) {
-      this.$emit('new-resolution', `${description}\n${decision}`)
+      this.$emit('new-resolution', `* ${description}\n* ${decision.optionDescription}\n* ${decision.consequenceDescription}`)
     }
   }
 }
