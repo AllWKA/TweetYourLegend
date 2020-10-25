@@ -10,7 +10,7 @@
                     :defence="$store.state.player.stats.shield" :max-defence="$store.state.player.stats.maxShield"
                     :live="$store.state.player.stats.life" :max-live="$store.state.player.stats.maxLife"/>
       <Decisions :options="$store.state.currentRoom.options" :description="$store.state.currentRoom.description"
-                 @new-resolution="saveRoomResolution"></Decisions>
+                 @resolution="saveRoomResolution" @consequence="saveConsequence"></Decisions>
       <Legend @ToggleLegendVisible="toggleIsLegendVisible" :is-legend-visible="isLegendVisible" username="Paco"
               :legend="$store.state.legend"/>
     </div>
@@ -43,6 +43,10 @@ export default {
     saveRoomResolution(resolution) {
       this.$store.commit('saveRoom', resolution)
       this.$store.commit('setCurrentRoom', engine.getRngPosRoom());
+    },
+    saveConsequence(consequence) {
+      console.log(`saving consequence ${JSON.stringify(consequence)}`);
+      this.$store.commit('applyConsequence', consequence);
     },
     toggleIsLegendVisible(isLegendVisible) {
       this.isLegendVisible = isLegendVisible;

@@ -14,7 +14,10 @@ export default {
   props: {options: Array, description: String},
   methods: {
     sendDecision(decision, description) {
-      this.$emit('new-resolution', `* ${description}\n* ${decision.optionDescription}\n* ${decision.consequenceDescription}`)
+      this.$emit('resolution', `* ${description}\n* ${decision.optionDescription}\n* ${decision.consequenceDescription}`)
+      if (decision.consequences) {
+        this.$emit('consequence', decision.consequences);
+      }
     }
   }
 }

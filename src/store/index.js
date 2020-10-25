@@ -37,12 +37,12 @@ export default new Vuex.Store({
                         optionDescription: 'Salí corriendo del pestazo.',
                         consequenceDescription: 'Pude escapar.',
                         consequences: {
-                            life: 0,
-                            maxLife: 0,
-                            shield: 0,
-                            maxShield: 0,
-                            attack: 0,
-                            maxAttack: 0
+                            life: 3,
+                            maxLife: 5,
+                            shield: 2,
+                            maxShield: 5,
+                            attack: 5,
+                            maxAttack: 5
                         }
                     },
                     {
@@ -117,6 +117,12 @@ export default new Vuex.Store({
         },
         saveRoom(state, roomResolution) {
             state.legend.push(roomResolution);
+        },
+        applyConsequence(state, consequence){
+            for (const key in consequence) {
+                console.log('key: ', key)
+                state.player.stats[key] = state.player.stats[key] + consequence[key]
+            }
         }
     },
     actions: {
