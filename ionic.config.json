@@ -1,0 +1,7 @@
+{
+  "name": "TweetYourLegend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
